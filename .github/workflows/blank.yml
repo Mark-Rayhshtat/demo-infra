@@ -4,5 +4,17 @@ jobs:
   Hello-World-Job:
     runs-on:
       - codebuild-mark-test-${{ github.run_id }}-${{ github.run_attempt }}
+    # steps:
+    #   - run: echo "Hello World"
     steps:
-      - run: echo "Hello World"
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-region: eu-west-1
+
+      - name: sts
+        run: |
+          aws sts get-caller-identity
