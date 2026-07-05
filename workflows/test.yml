@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - cicd
-
 jobs:
   test:
     name: Test
